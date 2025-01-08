@@ -1,0 +1,41 @@
+{
+	"name": "PL_Dynamicpipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "GetConfigfilesFromBlbSA",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "DS_BlbJsonconfig",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2025-01-07T07:06:10Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
